@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Kontak</title>
+    <style>
+        .vertical-frame {
+            border: 2px solid black;
+            padding: 10px;
+            display: inline-block;
+            margin: auto;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Form Kontak</h2>
+    <div class="vertical-frame">
+        <form id="contactForm">
+            <label for="Nama">Nama:</label><br>
+            <input type="text" id="Nama" name="Nama" size="20" maxlength="30"><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" size="20" maxlength="30"><br><br>
+
+            <label for="phone">Nomor Telepon:</label><br>
+            <input type="tel" id="phone" name="phone" size="20" maxlength="15"><br><br>
+
+            <label for="message">Pesan:</label><br>
+            <textarea id="message" name="message" rows="4" cols="30"></textarea><br><br>
+            
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </form>
+
+        <div id="errorMessages" class="error"></div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            var errorMessages = '';
+            var nama = document.getElementById('Nama').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var phone = document.getElementById('phone').value.trim();
+            var message = document.getElementById('message').value.trim();
+            
+            if (!nama) errorMessages += 'Nama harus diisi.<br>';
+            if (!email) errorMessages += 'Email harus diisi.<br>';
+            if (!phone) errorMessages += 'Nomor telepon harus diisi.<br>';
+            if (!message) errorMessages += 'Pesan harus diisi.<br>';
+            
+            var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (email && !emailPattern.test(email)) {
+                errorMessages += 'Format email tidak valid.<br>';
+            }
+            
+            var phonePattern = /^[0-9]+$/;
+            if (phone && !phonePattern.test(phone)) {
+                errorMessages += 'Nomor telepon hanya boleh berisi angka.<br>';
+            }
+
+            if (errorMessages) {
+                document.getElementById('errorMessages').innerHTML = errorMessages;
+                event.preventDefault();
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liputan 600 Jawa Tenggara</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        .news-list {
+            list-style: none;
+            padding: 0;
+        }
+        .news-item {
+            margin-bottom: 20px;
+        }
+        .news-item img {
+            width: 100%; 
+            height: 400px; 
+            object-fit: cover; 
+        }
+        .news-item h2 {
+            color: #000000;
+        }
+        .news-item a {
+            text-decoration: none;
+            color: #2b8a6a;
+        }
+        .news-item a:hover {
+            text-decoration: underline;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #d00606;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #b30030;
+        }
+        .news-section {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Berita Tribun</h1>
+    </div>
+
+    <div class="container" id="beranda">
+        <h2>Beranda</h2>
+        <ul class="news-list">
+            <li class="news-item">
+                <h2><a href="#" data-news="news1">Kerap Dibully Bikin Santri di Langkat Dendam Hingga Nekat Bakar Pengurus Ponpes</a></h2>
+                <img src="Bakar.jpg" alt="Gambar Bakar">
+                <p>Published: 20 Oktober 2024</p>
+                <p>Artikel ini membahas tentang seorang santri yang kerap dibully hingga...</p>
+            </li>
+            <li class="news-item">
+                <h2><a href="#" data-news="news2">Anjing Peliharaan Mati Majikan Pukul Tak Beri Makan ART</a></h2>
+                <img src="siksa.jpg" alt="Gambar Siksa">
+                <p>Published: 18 Oktober 2024</p>
+                <p>Seorang ART di sumatera utara dipukul oleh majikan karena...</p>
+            </li>
+            <li class="news-item">
+                <h2><a href="#" data-news="news3">Siswa Tewas Usai Diduga Dihukum Squat Jump 100 Kali</a></h2>
+                <img src="squat.jpg" alt="Gambar Squat">
+                <p>Published: 15 Oktober 2024</p>
+                <p>Seorang siswa dihukum squat jump 100 kali hingga...</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container news-section" id="news1">
+        <h2>Kerap Dibully Bikin Santri di Langkat Dendam Hingga Nekat Bakar Pengurus Ponpes</h2>
+        <img src="Bakar.jpg" alt="Gambar Bakar">
+        <p>Published: 20 Oktober 2024</p>
+        <p>
+            Artikel ini membahas tentang seorang santri yang kerap dibully hingga nekat bakar pengurus Ponpes. 
+            Seorang santri berinisial FAZ (17) nekat membakar Adab Auli (19), yang merupakan pengurus pengajar pondok di Kabupaten Langkat, Sumatera Utara (Sumut). Pelaku mengaku dendam karena sering diejek oleh korban.
+        </p>
+        <a href="#" class="back-button">Kembali ke Daftar Berita</a>
+    </div>
+
+    <div class="container news-section" id="news2">
+        <h2>Anjing Peliharaan Mati Majikan Pukul Tak Beri Makan ART</h2>
+        <img src="siksa.jpg" alt="Gambar Siksa">
+        <p>Published: 18 Oktober 2024</p>
+        <p>
+            Seorang ART di sumatera utara dipukul oleh majikan karena anjing peliharaannya mati. 
+            Seorang asisten rumah tangga (ART) di Kota Malang berinisial HNF (21) diduga disiksa majikannya, HMN (45). Ia juga tak diberi makan, dipukul hingga dijambak oleh majikannya karena anjing majikannya mati.
+        </p>
+        <a href="#" class="back-button">Kembali ke Daftar Berita</a>
+    </div>
+
+    <div class="container news-section" id="news3">
+        <h2>Teknologi 5G dan Masa Depan Komunikasi</h2>
+        <img src="squat.jpg" alt="Gambar Squat">
+        <p>Published: 15 Oktober 2024</p>
+        <p>
+            Seorang siswa dihukum squat jump 100 kali hingga diduga tewas.
+            Pihak kepolisian menyelidiki terkait siswa SMPN 1 STM Hilir Rindu Syahputra Sinaga (14) yang diduga tewas usai dihukum gurunya squat jump sebanyak 100 kali. Hingga saat ini, penyelidikan itu masih terus dilakukan.
+        </p>
+        <a href="#" class="back-button">Kembali ke Daftar Berita</a>
+    </div>
+
+    <script>
+        var newsSections = document.querySelectorAll('.news-section');
+        var newsLinks = document.querySelectorAll('a[data-news]');
+        var beranda = document.getElementById('beranda');
+        
+        function showNews(newsId) {
+            beranda.style.display = 'none';  
+            newsSections.forEach(function(section) {
+                section.classList.remove('active');  
+            });
+            document.getElementById(newsId).classList.add('active');  
+        }
+        
+        function showBeranda() {
+            beranda.style.display = 'block';  
+            newsSections.forEach(function(section) {
+                section.classList.remove('active');  
+            });
+        }
+
+        newsLinks.forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();  
+                var newsId = event.target.getAttribute('data-news');  
+                showNews(newsId);  
+            });
+        });
+
+        var backButtons = document.querySelectorAll('.back-button');
+        backButtons.forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                showBeranda();  
+            });
+        });
+    </script>
+
+</body>
+</html>
